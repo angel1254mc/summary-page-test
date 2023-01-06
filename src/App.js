@@ -1,24 +1,24 @@
 import logo from './logo.svg';
 import './App.css';
+import { Outlet, Route, Routes, useParams } from "react-router-dom";
+import Summary from './components/Summary/Summary';
+import Detailed from './Detailed';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/dashboard" element={<Detailed/>}>
+        <Route path="" element={<Summary/>}/>
+        <Route path="summary" element={<Summary/>}/>
+        <Route path="solicitation" element={<Summary/>}/>
+        <Route path="Notes" element={<Summary/>}/>
+        <Route path="Team" element={<Summary/>}/>
+        <Route path="Tasks" element={<Summary/>}/>
+        <Route path="Documents" element={<Summary/>}/>
+        <Route path="Score" element={<Summary/>}/>
+      </Route>
+      <Route path="*" element={<div>404</div>} />
+    </Routes>
   );
 }
 
